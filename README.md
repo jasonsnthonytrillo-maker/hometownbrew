@@ -5,19 +5,21 @@ A React + Vite static website that supports multiple clients from a single deplo
 - Logo / banner
 - Color theme
 - Products / prices
-- Messenger checkout link
-- Contact information
+- Messenger Contact information
 
-## URL Structure
+## checkout link
+- URL Structure
+
+This project uses HashRouter for compatibility with static hosting:
 
 ```
-your-site.com/                    → Default client (hometownbrew)
-your-site.com/hometownbrew        → Hometown Brew
-your-site.com/hometownbrew/menu  → Hometown Brew Menu
-your-site.com/milkteashop        → Milk Tea Shop
-your-site.com/milkteashop/menu   → Milk Tea Shop Menu
-your-site.com/projectbrew        → Project Brew
-your-site.com/projectbrew/menu   → Project Brew Menu
+https://yoursite.com/                    → Default client
+https://yoursite.com/#/hometownbrew      → Hometown Brew
+https://yoursite.com/#/hometownbrew/menu → Hometown Brew Menu
+https://yoursite.com/#/milkteashop       → Milk Tea Shop
+https://yoursite.com/#/milkteashop/menu  → Milk Tea Shop Menu
+https://yoursite.com/#/projectbrew        → Project Brew
+https://yoursite.com/#/projectbrew/menu   → Project Brew Menu
 ```
 
 ## Folder Structure
@@ -65,7 +67,6 @@ newclientname: {
   categories: [
     { id: 'all', label: 'All' },
     { id: 'category1', label: 'Category 1' },
-    // Add more categories
   ],
   products: [
     {
@@ -76,7 +77,6 @@ newclientname: {
       category: 'category1',
       image: 'https://...'
     },
-    // Add more products
   ],
   contact: {
     phone: '(+63) 912-345-6789',
@@ -86,7 +86,6 @@ newclientname: {
     formsubmitEmail: 'formsubmit@email.com',
     storeHours: [
       { day: 'Monday', hours: '10 AM–10 PM', isClosed: false },
-      // Add more days
     ]
   },
   messengerLink: 'https://www.messenger.com/t/PAGE_ID'
@@ -99,9 +98,7 @@ newclientname: {
 
 3. **Deploy** - Just push to GitHub and Render will automatically deploy!
 
-## Example Configuration
-
-### Client Data Structure (clients.js)
+## Example Client Data Structure (clients.js)
 
 ```
 javascript
@@ -126,12 +123,11 @@ export const clients = {
     id: 'milkteashop',
     name: 'Milk Tea Shop',
     logo: '/milktea-logo.png',
-    // ... other configuration
   }
 }
 ```
 
-### Using Client Data in Components
+## Using Client Data in Components
 
 ```
 javascript
@@ -182,30 +178,34 @@ bash
    - Wait for deployment to complete
    - Get your URL (e.g., `your-site.onrender.com`)
 
-5. **Add Custom Domains (Optional)**:
-   - Go to your site settings → "Custom Domains"
-   - Add your domain
-   - Update DNS records as instructed
+5. **Access Your Sites**:
+   - `your-site.onrender.com/#/hometownbrew` → Hometown Brew
+   - `your-site.onrender.com/#/milkteashop` → Milk Tea Shop
+   - `your-site.onrender.com/#/projectbrew` → Project Brew
 
-### How It Works
+### Adding Custom Domains (Optional)
+- Go to your site settings → "Custom Domains"
+- Add your domain
+- Update DNS records as instructed
+
+## How It Works
 
 Once deployed:
-- `your-site.onrender.com` → Shows default client
-- `your-site.onrender.com/milkteashop` → Shows Milk Tea Shop
-- `your-site.onrender.com/projectbrew` → Shows Project Brew
+- HashRouter handles all client routes
+- Client ID is extracted from URL hash (e.g., `#/projectbrew`)
+- Components automatically load client-specific data from `clients.js`
 
 To add a new client:
 1. Edit `src/data/clients.js` locally
 2. Push to GitHub
 3. Render automatically redeploys!
-4. New client is live at `your-site.com/newclientname`
+4. New client is live at `your-site.com/#/newclientname`
 
 ## Dynamic Theming
 
 Client themes are applied as CSS variables automatically:
 
-```
-css
+```css
 /* Components can use these CSS variables */
 .component {
   background-color: var(--client-background);
@@ -224,13 +224,13 @@ If you have an existing single-client website:
 1. Move your hardcoded data to `src/data/clients.js`
 2. Use the default client key (e.g., `hometownbrew`)
 3. Components will automatically use client data from context
-4. Test at `/yourclientid` route
+4. Test at `/#/yourclientid` route
 
 ## Troubleshooting
 
-**404 on client routes**:
-- Make sure all client IDs are added to the clients.js export
-- Check that routes in App.jsx include all client IDs
+**Page not found or blank**:
+- Make sure you're using the hash URL format: `/#/clientname`
+- Verify all client IDs are added to the clients.js export
 
 **Products not showing**:
 - Verify products array is in client configuration
@@ -239,3 +239,8 @@ If you have an existing single-client website:
 **Messenger link not working**:
 - Ensure messengerLink is a valid Facebook Messenger URL
 - Test the link format: `https://www.messenger.com/t/PAGE_ID`
+
+**Changes not showing on Render**:
+- Make sure you've pushed changes to GitHub
+- Check Render deployment logs for build errors
+- Trigger a manual redeploy if needed
