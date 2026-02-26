@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useCart } from '../context/CartContext'
+import { useClient } from '../context/ClientContext'
 import './Cart.css'
 
 function Cart() {
   const { cartItems, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart()
+  const { client } = useClient()
   const [showOrderType, setShowOrderType] = useState(false)
   const [showNameInput, setShowNameInput] = useState(false)
   const [showPaymentMode, setShowPaymentMode] = useState(false)
@@ -14,6 +16,10 @@ function Cart() {
   const [customerName, setCustomerName] = useState('')
   const [selectedPaymentMode, setSelectedPaymentMode] = useState('')
   const [selectedCashlessOption, setSelectedCashlessOption] = useState('')
+
+  // Get client-specific data
+  const clientName = client?.name || 'Business'
+  const messengerLink = client?.messengerLink || 'https://www.messenger.com/t/61560806385216'
 
   const generateOrderId = () => {
     const timestamp = Date.now().toString().slice(-6)
@@ -37,7 +43,7 @@ function Cart() {
       orderText += `${index + 1}. ${item.name} x${item.quantity}\n`
     })
     
-    orderText += `\nThank you for ordering at Hometown Brew!`
+    orderText += `\nThank you for ordering at ${clientName}!`
     return orderText
   }
 
@@ -80,8 +86,8 @@ function Cart() {
     const orderText = generateOrderText(selectedOrderType, paymentDisplay, '')
     const encodedMessage = encodeURIComponent(orderText)
     
-    // Open Facebook Messenger with pre-filled message
-    window.open(`https://www.messenger.com/t/61560806385216?text=${encodedMessage}`, '_blank')
+    // Open Facebook Messenger with pre-filled message (dynamic link)
+    window.open(`${messengerLink}?text=${encodedMessage}`, '_blank')
   
     // Clear cart after checkout
     clearCart()

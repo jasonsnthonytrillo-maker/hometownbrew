@@ -1,109 +1,23 @@
 import { useState } from 'react'
 import { useCart } from '../context/CartContext'
+import { useClient } from '../context/ClientContext'
 import './Menu.css'
 
 function Menu() {
   const [activeCategory, setActiveCategory] = useState('all')
   const { addToCart } = useCart()
+  const { client } = useClient()
 
-  const categories = [
+  // Get categories and products from client config, with fallbacks
+  const categories = client?.categories || [
     { id: 'all', label: 'All' },
     { id: 'coffee', label: 'Coffee' },
     { id: 'pastries', label: 'Pastries' },
     { id: 'dairy', label: 'Dairy Products' },
-    { id: 'Best Seller', label: 'Best Seller' }
+    { id: 'bestseller', label: 'Best Seller' }
   ]
 
-  const products = [
-    {
-      id: 1,
-      name: 'Espresso',
-      description: 'Rich and bold single shot espresso',
-      price: 120,
-      category: 'coffee',
-      image: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&h=300&fit=crop'
-    },
-    {
-      id: 2,
-      name: 'Cappuccino',
-      description: 'Perfect balance of espresso, steamed milk and foam',
-      price: 150,
-      category: 'coffee',
-      image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop'
-    },
-    {
-      id: 3,
-      name: 'Latte',
-      description: 'Smooth and creamy espresso with steamed milk',
-      price: 160,
-      category: 'coffee',
-      image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop'
-    },
-    {
-      id: 4,
-      name: 'Americano',
-      description: 'Classic espresso with hot water for a milder taste',
-      price: 130,
-      category: 'coffee',
-      image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=300&fit=crop'
-    },
-    {
-      id: 5,
-      name: 'Croissant',
-      description: 'Buttery flaky croissant, perfectly baked golden brown',
-      price: 80,
-      category: 'pastries',
-      image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=300&fit=crop'
-    },
-    {
-      id: 6,
-      name: 'Danish Pastry',
-      description: 'Sweet and tender Danish pastry filled with cream cheese',
-      price: 120,
-      category: 'pastries',
-      image: 'https://images.unsplash.com/photo-1509365390695-33aee754301f?w=400&h=300&fit=crop'
-    },
-    {
-      id: 7,
-      name: 'Blueberry Muffin',
-      description: 'Freshly baked muffin bursting with juicy blueberries',
-      price: 150,
-      category: 'pastries',
-      image: 'https://images.unsplash.com/photo-1606850780554-b55ea4dd0b70?w=400&h=300&fit=crop'
-    },
-    {
-      id: 8,
-      name: 'Cinnamon Roll',
-      description: 'Warm cinnamon roll topped with creamy frosting',
-      price: 170,
-      category: 'pastries',
-      image: 'https://images.unsplash.com/photo-1509365390695-33aee754301f?w=400&h=300&fit=crop'
-    },
-    {
-      id: 9,
-      name: 'Matu Chocolate Fresh Milk',
-      description: 'Farm-fresh pure milk, locally sourced',
-      price: 120,
-      category: 'dairy',
-      image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop'
-    },
-    {
-      id: 10,
-      name: 'Fresh Milk',
-      description: 'Probiotic yogurt drink for gut health',
-      price: 100,
-      category: 'dairy',
-      image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop'
-    },
-    {
-      id: 11,
-      name: 'White Mocha',
-      description: 'Rich and creamy white mocha with vanilla and chocolate',
-      price: 150,
-      category: 'Best Seller',
-      image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop'
-    },
-  ]
+  const products = client?.products || []
 
   const filteredProducts = activeCategory === 'all' 
     ? products 
@@ -121,7 +35,6 @@ function Menu() {
 
   return (
     <div className="menu fade-in">
-      {/* Menu Hero Section */}
       <section className="menu-hero">
         <div className="menu-hero-content">
           <h1 className="menu-title">Our Menu</h1>
@@ -129,10 +42,8 @@ function Menu() {
         </div>
       </section>
 
-      {/* Menu Content Section */}
       <section className="menu-content">
         <div className="menu-container">
-          {/* Category Tabs */}
           <div className="menu-tabs">
             {categories.map(category => (
               <button
@@ -145,7 +56,6 @@ function Menu() {
             ))}
           </div>
 
-          {/* Products Grid */}
           <div className="menu-grid">
             {filteredProducts.map(product => (
               <div key={product.id} className="menu-card">

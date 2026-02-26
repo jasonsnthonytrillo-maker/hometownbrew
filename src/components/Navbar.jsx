@@ -1,12 +1,15 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { useCart } from '../context/CartContext'
+import { useClient } from '../context/ClientContext'
 import './Navbar.css'
 
 function Navbar() {
   const location = useLocation()
+  const params = useParams()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { cartItems } = useCart()
+  const { clientId, client: clientData } = useClient()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -18,16 +21,25 @@ function Navbar() {
 
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0)
 
+  // Get client-specific data with fallback
+  const currentClient = clientData || {
+    name: 'Business',
+    logo: '/hblogo.jpg'
+  }
+
+  // Determine the base path for navigation
+  const basePath = clientId ? `/${clientId}` : ''
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo" onClick={closeMenu}>
-        <img 
-            src="/hblogo.jpg"
-            alt="Hometown Brew Logo"
+        <Link to={basePath || "/"} className="navbar-logo" onClick={closeMenu}>
+          <img 
+            src={currentClient.logo}
+            alt={`${currentClient.name} Logo`}
             className="logo-image"
           />
-          <span className="logo-text">Hometown Brew</span>
+          <span className="logo-text">{currentClient.name}</span>
         </Link>
         
         {/* Hamburger Menu Button */}
@@ -44,8 +56,8 @@ function Navbar() {
         <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
           <li>
             <Link 
-              to="/" 
-              className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+              to={basePath || "/"} 
+              className={`nav-link ${location.pathname === '/' || location.pathname === basePath ? 'active' : ''}`}
               onClick={closeMenu}
             >
               Home
@@ -53,8 +65,8 @@ function Navbar() {
           </li>
           <li>
             <Link 
-              to="/menu" 
-              className={`nav-link ${location.pathname === '/menu' ? 'active' : ''}`}
+              to={`${basePath}/menu`} 
+              className={`nav-link ${location.pathname === '/menu' || location.pathname === `${basePath}/menu` ? 'active' : ''}`}
               onClick={closeMenu}
             >
               Menu
@@ -62,8 +74,8 @@ function Navbar() {
           </li>
           <li>
             <Link 
-              to="/about" 
-              className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+              to={`${basePath}/about`} 
+              className={`nav-link ${location.pathname === '/about' || location.pathname === `${basePath}/about` ? 'active' : ''}`}
               onClick={closeMenu}
             >
               About
@@ -71,8 +83,8 @@ function Navbar() {
           </li>
           <li>
             <Link 
-              to="/contact" 
-              className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
+              to={`${basePath}/contact`} 
+              className={`nav-link ${location.pathname === '/contact' || location.pathname === `${basePath}/contact` ? 'active' : ''}`}
               onClick={closeMenu}
             >
               Contact
@@ -80,8 +92,8 @@ function Navbar() {
           </li>
           <li>
             <Link 
-              to="/cart" 
-              className={`nav-link cart-link ${location.pathname === '/cart' ? 'active' : ''}`}
+              to={`${basePath}/cart`} 
+              className={`nav-link cart-link ${location.pathname === '/cart' || location.pathname === `${basePath}/cart` ? 'active' : ''}`}
               onClick={closeMenu}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
