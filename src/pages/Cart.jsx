@@ -5,7 +5,7 @@ import { useClient } from '../context/ClientContext'
 import './Cart.css'
 
 function Cart() {
-  const { cartItems, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart()
+  const { cartItems, removeFromCart, updateQuantity, updateSize, clearCart, cartTotal } = useCart()
   const { client, clientId } = useClient()
   const [showOrderType, setShowOrderType] = useState(false)
   const [showNameInput, setShowNameInput] = useState(false)
@@ -16,6 +16,7 @@ function Cart() {
   const [customerName, setCustomerName] = useState('')
   const [selectedPaymentMode, setSelectedPaymentMode] = useState('')
   const [selectedCashlessOption, setSelectedCashlessOption] = useState('')
+  const [selectedSizeItemId, setSelectedSizeItemId] = useState(null)
 
   // Get client-specific base path for navigation
   const basePath = clientId ? `/${clientId}` : ''
@@ -66,7 +67,7 @@ function Cart() {
     orderText += "Orders:\n"
     
     cartItems.forEach((item, index) => {
-      orderText += `${index + 1}. ${item.name} x${item.quantity} - ₱${item.price * item.quantity}\n`
+      orderText += `${index + 1}. ${item.name}${item.size ? ` (${item.size})` : ''} x${item.quantity} - ₱${item.price * item.quantity}\n`
     })
     
     orderText += `\n\nThis is my order for ${clientName}. Please confirm.`
@@ -163,6 +164,22 @@ function Cart() {
     setShowConfirm(false)
     setSelectedPaymentMode('')
     setSelectedCashlessOption('')
+  }
+
+  const handleChangeSizeClick = (itemId) => {
+    setSelectedSizeItemId(itemId)
+  }
+
+  const handleSizeChange = (itemId, newSize) => {
+    updateSize(itemId, newSize.label, newSize.price)
+    setSelectedSizeItemId(null)
+    // Scroll to cart summary after size change
+    setTimeout(() => {
+      const cartSummary = document.querySelector('.cart-summary')
+      if (cartSummary) {
+        cartSummary.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      }
+    }, 100)
   }
 
   if (cartItems.length === 0) {
@@ -370,6 +387,19 @@ function Cart() {
               <div className="cart-item-details">
                 <h3 className="cart-item-name">{item.name}</h3>
                 <p className="cart-item-description">{item.description}</p>
+                {item.size && (
+                  <p className="cart-item-size">
+                    Size: <span className="size-badge">{item.size}</span>
+                    {item.sizes && item.sizes.length > 0 && (
+                      <button 
+                        className="change-size-btn"
+                        onClick={() => handleChangeSizeClick(item.id)}
+                      >
+                        Change
+                      </button>
+                    )}
+                  </p>
+                )}
               </div>
               <div className="cart-item-actions">
                 <div className="cart-item-price">
@@ -400,6 +430,33 @@ function Cart() {
             </div>
           ))}
         </div>
+
+        {/* Size Change Modal */}
+        {selectedSizeItemId && cartItems.find(item => item.id === selectedSizeItemId) && cartItems.find(item => item.id === selectedSizeItemId).sizes && (
+          <div className="size-modal-overlay">
+            <div className="size-modal-card">
+              <h3>Select Size for {cartItems.find(item => item.id === selectedSizeItemId).name}</h3>
+              <div className="size-options">
+                {cartItems.find(item => item.id === selectedSizeItemId).sizes.map((size, index) => (
+                  <button
+                    key={index}
+                    className="size-option-btn"
+                    onClick={() => handleSizeChange(selectedSizeItemId, size)}
+                  >
+                    <span className="size-label">{size.label}</span>
+                    <span className="size-price">₱{size.price}</span>
+                  </button>
+                ))}
+              </div>
+              <button 
+                className="size-cancel-btn"
+                onClick={() => setSelectedSizeItemId(null)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="cart-summary">
           <div className="cart-total">

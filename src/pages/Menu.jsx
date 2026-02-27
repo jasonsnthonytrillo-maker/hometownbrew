@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useCart } from '../context/CartContext'
 import { useClient } from '../context/ClientContext'
 import './Menu.css'
@@ -6,8 +6,37 @@ import './Menu.css'
 function Menu() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [selectedSize, setSelectedSize] = useState(null)
+  const [toastMessage, setToastMessage] = useState('')
+  const [showToast, setShowToast] = useState(false)
   const { addToCart } = useCart()
   const { client } = useClient()
+
+  const PRODUCTS_PER_PAGE = 15
+
+  // Scroll to size modal when product is selected
+  useEffect(() => {
+    if (selectedProduct && selectedProduct.sizes && selectedProduct.sizes.length > 0) {
+      setTimeout(() => {
+        const sizeModal = document.querySelector('.size-modal-overlay')
+        if (sizeModal) {
+          sizeModal.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+    }
+  }, [selectedProduct])
+
+  const showToastNotification = (message, shouldScroll = true) => {
+    setToastMessage(message)
+    setShowToast(true)
+    // Scroll to top to show the toast notification (unless disabled)
+    if (shouldScroll) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+    setTimeout(() => setShowToast(false), 2500)
+  }
 
   // Get categories and products from client config, with fallbacks
   const categories = client?.categories || [
@@ -27,14 +56,56 @@ function Menu() {
     return matchesCategory && matchesSearch
   })
 
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
+  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE
+  const endIndex = startIndex + PRODUCTS_PER_PAGE
+  const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
+
+  // Reset to page 1 when category or search changes
+  const handleCategoryChange = (categoryId) => {
+    setActiveCategory(categoryId)
+    setCurrentPage(1)
+  }
+
+  const handleSearchChange = (value) => {
+    setSearchTerm(value)
+    setCurrentPage(1)
+  }
+
   const handleAddToCart = (product) => {
-    addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      description: product.description
-    })
+    // If product has sizes, show size selection modal
+    if (product.sizes && product.sizes.length > 0) {
+      setSelectedProduct(product)
+      setSelectedSize(null)
+    } else {
+      // If no sizes, add to cart directly
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        description: product.description
+      })
+      showToastNotification(`${product.name} added to cart! ✓`)
+    }
+  }
+
+  const handleSizeSelect = (size) => {
+    if (selectedProduct) {
+      addToCart({
+        id: selectedProduct.id,
+        name: selectedProduct.name,
+        price: size.price,
+        image: selectedProduct.image,
+        description: selectedProduct.description,
+        size: size.label,
+        sizes: selectedProduct.sizes
+      })
+      showToastNotification(`${selectedProduct.name} added to cart! ✓`, false)
+      setSelectedProduct(null)
+      setSelectedSize(null)
+    }
   }
 
   return (
@@ -54,7 +125,7 @@ function Menu() {
               className="menu-search-input"
               placeholder="Search products..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
             />
             <span className="menu-search-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +139,7 @@ function Menu() {
               <button
                 key={category.id}
                 className={`menu-tab ${activeCategory === category.id ? 'active' : ''}`}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() => handleCategoryChange(category.id)}
               >
                 {category.label}
               </button>
@@ -76,7 +147,7 @@ function Menu() {
           </div>
 
           <div className="menu-grid">
-            {filteredProducts.map(product => (
+            {paginatedProducts.map(product => (
               <div key={product.id} className="menu-card">
                 <div className="menu-card-image">
                   <img src={product.image} alt={product.name} />
@@ -85,7 +156,12 @@ function Menu() {
                   <h3 className="menu-card-title">{product.name}</h3>
                   <p className="menu-card-description">{product.description}</p>
                   <div className="menu-card-footer">
-                    <span className="menu-card-price">₱{product.price}</span>
+                    <span className="menu-card-price">
+                      {product.sizes && product.sizes.length > 0 
+                        ? `From ₱${product.sizes[0].price}`
+                        : `₱${product.price}`
+                      }
+                    </span>
                     <button 
                       className="menu-card-button"
                       onClick={() => handleAddToCart(product)}
@@ -97,6 +173,63 @@ function Menu() {
               </div>
             ))}
           </div>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="pagination-controls">
+              <button 
+                className="pagination-btn"
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                ← Previous
+              </button>
+              <div className="pagination-info">
+                Page {currentPage} of {totalPages}
+              </div>
+              <button 
+                className="pagination-btn"
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+              >
+                Next →
+              </button>
+            </div>
+          )}
+
+          {/* Size Selection Modal */}
+          {selectedProduct && selectedProduct.sizes && (
+            <div className="size-modal-overlay">
+              <div className="size-modal-card">
+                <h3>Select Size for {selectedProduct.name}</h3>
+                <div className="size-options">
+                  {selectedProduct.sizes.map((size, index) => (
+                    <button
+                      key={index}
+                      className="size-option-btn"
+                      onClick={() => handleSizeSelect(size)}
+                    >
+                      <span className="size-label">{size.label}</span>
+                      <span className="size-price">₱{size.price}</span>
+                    </button>
+                  ))}
+                </div>
+                <button 
+                  className="size-cancel-btn"
+                  onClick={() => setSelectedProduct(null)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Toast Notification */}
+          {showToast && (
+            <div className="toast-notification">
+              <span className="toast-message">{toastMessage}</span>
+            </div>
+          )}
         </div>
       </section>
     </div>

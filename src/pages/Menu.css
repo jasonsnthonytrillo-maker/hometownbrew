@@ -249,7 +249,66 @@
   }
 }
 
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  padding: 2rem;
+}
+
+.pagination-btn {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-dark-green) 100%);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(27, 67, 50, 0.2);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(27, 67, 50, 0.3);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pagination-info {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary-dark-green);
+  min-width: 150px;
+  text-align: center;
+}
+
 @media (max-width: 480px) {
+  .pagination-controls {
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  .pagination-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .pagination-info {
+    font-size: 0.95rem;
+    min-width: 100%;
+    order: -1;
+  }
   .menu-hero-content h1 {
     font-size: 1.75rem;
   }
@@ -271,5 +330,151 @@
 
   .menu-card-image {
     height: 180px;
+  }
+}
+
+/* Size Selection Modal */
+.size-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.size-modal-card {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  animation: slideUp 0.3s ease;
+}
+
+.size-modal-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-dark-green);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.size-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.size-option-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(93, 167, 106, 0.1) 0%, rgba(113, 188, 120, 0.1) 100%);
+  border: 2px solid var(--light-green);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.size-option-btn:hover {
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-dark-green) 100%);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.size-label {
+  flex: 1;
+  text-align: left;
+}
+
+.size-price {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.size-cancel-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #f0f0f0;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.size-cancel-btn:hover {
+  background-color: #e8e8e8;
+}
+
+/* Toast Notification */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+.toast-notification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 999;
+  animation: slideInUp 0.4s ease-out, slideOutDown 0.4s ease-out 2.1s forwards;
+}
+
+.toast-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .toast-notification {
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+    transform: translateX(0);
+    padding: 14px 20px;
+    font-size: 0.95rem;
   }
 }

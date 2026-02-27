@@ -35,6 +35,14 @@ export function CartProvider({ children }) {
     )
   }
 
+  const updateSize = (productId, newSize, newPrice) => {
+    setCartItems(prevItems =>
+      prevItems.map(item =>
+        item.id === productId ? { ...item, size: newSize, price: newPrice } : item
+      )
+    )
+  }
+
   const clearCart = () => {
     setCartItems([])
   }
@@ -48,6 +56,7 @@ export function CartProvider({ children }) {
       addToCart,
       removeFromCart,
       updateQuantity,
+      updateSize,
       clearCart,
       cartTotal,
       cartCount

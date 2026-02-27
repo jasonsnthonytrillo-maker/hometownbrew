@@ -30,7 +30,12 @@ export const clients = {
         description: 'Rich and bold single shot espresso',
         price: 120,
         category: 'hot-coffee',
-        image: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 120 },
+          { label: 'Medium (16oz)', price: 140 },
+          { label: 'Large (20oz)', price: 160 }
+        ]
       },
       {
         id: 2,
@@ -38,7 +43,12 @@ export const clients = {
         description: 'Perfect balance of espresso, steamed milk and foam',
         price: 150,
         category: 'hot-coffee',
-        image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 140 },
+          { label: 'Medium (16oz)', price: 160 },
+          { label: 'Large (20oz)', price: 180 }
+        ]
       },
       {
         id: 3,
@@ -46,7 +56,12 @@ export const clients = {
         description: 'Smooth and creamy espresso with steamed milk',
         price: 160,
         category: 'hot-coffee',
-        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 150 },
+          { label: 'Medium (16oz)', price: 170 },
+          { label: 'Large (20oz)', price: 190 }
+        ]
       },
       {
         id: 4,
@@ -54,7 +69,12 @@ export const clients = {
         description: 'Classic espresso with hot water for a milder taste',
         price: 130,
         category: 'hot-coffee',
-        image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 120 },
+          { label: 'Medium (16oz)', price: 140 },
+          { label: 'Large (20oz)', price: 160 }
+        ]
       },
       {
         id: 5,
@@ -94,7 +114,12 @@ export const clients = {
         description: 'Farm-fresh pure milk, locally sourced',
         price: 120,
         category: 'dairy',
-        image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 110 },
+          { label: 'Medium (16oz)', price: 130 },
+          { label: 'Large (20oz)', price: 150 }
+        ]
       },
       {
         id: 10,
@@ -102,7 +127,12 @@ export const clients = {
         description: 'Probiotic yogurt drink for gut health',
         price: 100,
         category: 'dairy',
-        image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 90 },
+          { label: 'Medium (16oz)', price: 110 },
+          { label: 'Large (20oz)', price: 130 }
+        ]
       },
       {
         id: 11,
@@ -118,7 +148,12 @@ export const clients = {
         description: 'Smooth and refreshing seasalt-flavored iced coffee',
         price: 150,
         category: 'iced-coffee',
-        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 140 },
+          { label: 'Medium (16oz)', price: 160 },
+          { label: 'Large (20oz)', price: 180 }
+        ]
       }
     ],
     contact: {
@@ -203,7 +238,12 @@ export const clients = {
         description: 'Premium black tea with creamy milk',
         price: 120,
         category: 'milktea',
-        image: 'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 110 },
+          { label: 'Medium (16oz)', price: 130 },
+          { label: 'Large (20oz)', price: 150 }
+        ]
       },
       {
         id: 2,
@@ -211,7 +251,12 @@ export const clients = {
         description: 'Caramelized brown sugar with fresh milk',
         price: 150,
         category: 'milktea',
-        image: 'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 140 },
+          { label: 'Medium (16oz)', price: 160 },
+          { label: 'Large (20oz)', price: 180 }
+        ]
       },
       {
         id: 3,
@@ -219,7 +264,12 @@ export const clients = {
         description: 'Smooth taro paste with creamy milk',
         price: 140,
         category: 'milktea',
-        image: 'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 130 },
+          { label: 'Medium (16oz)', price: 150 },
+          { label: 'Large (20oz)', price: 170 }
+        ]
       },
       {
         id: 4,
@@ -227,7 +277,12 @@ export const clients = {
         description: 'Fresh mango chunks with fruity tea',
         price: 130,
         category: 'fruittea',
-        image: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 120 },
+          { label: 'Medium (16oz)', price: 140 },
+          { label: 'Large (20oz)', price: 160 }
+        ]
       },
       {
         id: 5,
@@ -235,7 +290,12 @@ export const clients = {
         description: 'Sweet strawberries with refreshing tea',
         price: 120,
         category: 'fruittea',
-        image: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 110 },
+          { label: 'Medium (16oz)', price: 130 },
+          { label: 'Large (20oz)', price: 150 }
+        ]
       },
       {
         id: 6,
@@ -243,7 +303,12 @@ export const clients = {
         description: 'Creamy strawberry smoothie',
         price: 160,
         category: 'smoothie',
-        image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 150 },
+          { label: 'Medium (16oz)', price: 170 },
+          { label: 'Large (20oz)', price: 190 }
+        ]
       }
     ],
     contact: {
@@ -328,7 +393,12 @@ export const clients = {
         description: 'Single origin pour over coffee',
         price: 180,
         category: 'hot-coffee',
-        image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 170 },
+          { label: 'Medium (16oz)', price: 190 },
+          { label: 'Large (20oz)', price: 210 }
+        ]
       },
       {
         id: 2,
@@ -336,7 +406,12 @@ export const clients = {
         description: 'Smooth cold brewed coffee',
         price: 160,
         category: 'iced-coffee',
-        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 150 },
+          { label: 'Medium (16oz)', price: 170 },
+          { label: 'Large (20oz)', price: 190 }
+        ]
       },
       {
         id: 3,
@@ -344,7 +419,12 @@ export const clients = {
         description: 'Premium Japanese matcha with milk',
         price: 170,
         category: 'noncoffee',
-        image: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 160 },
+          { label: 'Medium (16oz)', price: 180 },
+          { label: 'Large (20oz)', price: 200 }
+        ]
       },
       {
         id: 4,
@@ -860,7 +940,12 @@ export const clients = {
         description: 'Homemade fresh lemonade',
         price: 80,
         category: 'drinks',
-        image: 'https://images.unsplash.com/photo-1585518419759-8a48d3f2ef30?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1585518419759-8a48d3f2ef30?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 70 },
+          { label: 'Medium (16oz)', price: 90 },
+          { label: 'Large (20oz)', price: 110 }
+        ]
       }
     ],
     contact: {
@@ -1153,7 +1238,12 @@ export const clients = {
         description: 'Fresh strawberry and banana smoothie',
         price: 150,
         category: 'fruit',
-        image: 'https://images.unsplash.com/photo-1590080876657-cd0eacc437b6?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1590080876657-cd0eacc437b6?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 140 },
+          { label: 'Medium (16oz)', price: 160 },
+          { label: 'Large (20oz)', price: 180 }
+        ]
       },
       {
         id: 2,
@@ -1161,7 +1251,12 @@ export const clients = {
         description: 'Protein-rich smoothie with whey powder',
         price: 200,
         category: 'protein',
-        image: 'https://images.unsplash.com/photo-1590550967968-9fa3209b03a5?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1590550967968-9fa3209b03a5?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 190 },
+          { label: 'Medium (16oz)', price: 210 },
+          { label: 'Large (20oz)', price: 230 }
+        ]
       },
       {
         id: 3,
@@ -1169,7 +1264,12 @@ export const clients = {
         description: 'Spinach, celery, apple detox smoothie',
         price: 180,
         category: 'detox',
-        image: 'https://images.unsplash.com/photo-1585730870360-62908ff1ca5d?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1585730870360-62908ff1ca5d?w=400&h=300&fit=crop',
+        sizes: [
+          { label: 'Small (12oz)', price: 170 },
+          { label: 'Medium (16oz)', price: 190 },
+          { label: 'Large (20oz)', price: 210 }
+        ]
       }
     ],
     contact: {

@@ -113,6 +113,41 @@
 .cart-item-description {
   font-size: 0.9rem;
   color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-size {
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.size-badge {
+  background-color: var(--primary-dark-green);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.change-size-btn {
+  background-color: transparent;
+  color: var(--primary-dark-green);
+  border: 1px solid var(--primary-dark-green);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.change-size-btn:hover {
+  background-color: var(--primary-dark-green);
+  color: white;
 }
 
 .cart-item-actions {
