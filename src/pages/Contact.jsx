@@ -70,7 +70,7 @@ function Contact() {
     const data = new FormData(form);
 
     try {
-      const response = await fetch(`https://formsubmit.co/${contactInfo.formsubmitEmail}`, {
+      const response = await fetch("https://formsubmit.co/tsccresurrection@gmail.com", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" }

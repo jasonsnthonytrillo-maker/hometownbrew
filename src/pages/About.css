@@ -1,11 +1,10 @@
 /* About Hero Section */
 .about-hero {
-  padding-top: 140px;
-  padding-bottom: 80px;
+  padding: 60px 5%;
   background: linear-gradient(
     135deg,
     var(--primary-dark-green) 0%,
-    var(--light-green) 100%
+    var(--darkest-green) 100%
   );
   text-align: center;
 }
