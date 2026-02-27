@@ -149,6 +149,10 @@ export const clients = {
       title: 'Hometown Brew - Coffee & Pastries',
       description: 'Hometown Brew – the best coffee and pastries in town!',
       image: '/hblogo.jpg'
+    },
+    social: {
+      facebook: 'https://www.facebook.com/hometownbrew24',
+      instagram: 'https://www.instagram.com/hometown_brew/'
     }
   },
 
@@ -253,6 +257,10 @@ export const clients = {
       title: 'Milk Tea Shop - Premium Boba & Fruit Tea',
       description: 'Milk Tea Shop – the best milk tea, fruit tea, and smoothies in town!',
       image: '/milktea-logo.png'
+    },
+    social: {
+      facebook: 'https://www.facebook.com/milkteashop',
+      instagram: 'https://www.instagram.com/milkteashop/'
     }
   },
 
@@ -341,6 +349,10 @@ export const clients = {
       title: 'Project Brew - Artisan Coffee & Pastries',
       description: 'Project Brew – premium artisan coffee and delicious pastries!',
       image: '/pblogo.jpg'
+    },
+    social: {
+      facebook: 'https://www.facebook.com/ProjectBrewBXU',
+      instagram: 'https://www.instagram.com/projectbrewbxu/?hl=en'
     }
   },
 
@@ -399,18 +411,22 @@ export const clients = {
       'Easy product updates',
       '24/7 access from anywhere',
       'Simple setup process'
-    ]
-  },
-  openGraph: {
-    title: 'Simplify POS - Point of Sale for Small Businesses',
-    description: 'Simplify POS – the best point of sale system for small businesses!',
-    image: '/simplifylogo.png',
-    url: 'https://jat-7xjr.onrender.com'
-  },
-  twitter: {
-    title: 'Simplify POS - Point of Sale for Small Businesses',
-    description: 'Simplify POS – the best point of sale system for small businesses!',
-    image: '/simplifylogo.png'
+    ],
+    openGraph: {
+      title: 'Simplify POS - Point of Sale for Small Businesses',
+      description: 'Simplify POS – the best point of sale system for small businesses!',
+      image: '/simplifylogo.png',
+      url: 'https://jat-7xjr.onrender.com'
+    },
+    twitter: {
+      title: 'Simplify POS - Point of Sale for Small Businesses',
+      description: 'Simplify POS – the best point of sale system for small businesses!',
+      image: '/simplifylogo.png'
+    },
+    social: {
+      facebook: 'https://www.facebook.com/jasonanthonytrillo',
+      instagram: 'https://www.instagram.com/jasonanthonytrillo/'
+    }
   }
 }
 
