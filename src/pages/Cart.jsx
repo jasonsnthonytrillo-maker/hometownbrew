@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useCart } from '../context/CartContext'
 import { useClient } from '../context/ClientContext'
 import './Cart.css'
@@ -17,6 +17,42 @@ function Cart() {
   const [selectedPaymentMode, setSelectedPaymentMode] = useState('')
   const [selectedCashlessOption, setSelectedCashlessOption] = useState('')
   const [selectedSizeItemId, setSelectedSizeItemId] = useState(null)
+
+  // Scroll to order type modal when checkout is clicked
+  useEffect(() => {
+    if (showOrderType) {
+      setTimeout(() => {
+        const modal = document.querySelector('.order-type-modal')
+        if (modal) {
+          modal.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+    }
+  }, [showOrderType])
+
+  // Scroll to name input modal
+  useEffect(() => {
+    if (showNameInput) {
+      setTimeout(() => {
+        const modal = document.querySelector('.order-type-modal')
+        if (modal) {
+          modal.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+    }
+  }, [showNameInput])
+
+  // Scroll to payment mode modal
+  useEffect(() => {
+    if (showPaymentMode) {
+      setTimeout(() => {
+        const modal = document.querySelector('.order-type-modal')
+        if (modal) {
+          modal.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+    }
+  }, [showPaymentMode])
 
   // Get client-specific base path for navigation
   const basePath = clientId ? `/${clientId}` : ''
