@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -16,38 +17,6 @@ import { getClientIds, defaultClientId } from './data/clients'
 function AppContent() {
   const location = useLocation()
   const { client } = useClient()
-
-  // Update Open Graph and meta tags based on client
-  useEffect(() => {
-    if (client) {
-      // Update basic meta tags
-      document.title = client.openGraph?.title || client.name
-      
-      // Helper function to update or create meta tag
-      const updateMetaTag = (property, content, isProperty = true) => {
-        let tag = document.querySelector(`meta[${isProperty ? 'property' : 'name'}="${property}"]`)
-        if (!tag) {
-          tag = document.createElement('meta')
-          tag.setAttribute(isProperty ? 'property' : 'name', property)
-          document.head.appendChild(tag)
-        }
-        tag.content = content
-      }
-
-      // Open Graph meta tags
-      updateMetaTag('og:title', client.openGraph?.title || client.name)
-      updateMetaTag('og:description', client.openGraph?.description || client.tagline)
-      updateMetaTag('og:image', client.openGraph?.image)
-      updateMetaTag('og:url', client.openGraph?.url || client.url)
-      updateMetaTag('og:type', 'website')
-
-      // Twitter meta tags
-      updateMetaTag('twitter:title', client.twitter?.title || client.name, false)
-      updateMetaTag('twitter:description', client.twitter?.description || client.tagline, false)
-      updateMetaTag('twitter:image', client.twitter?.image || client.logo, false)
-      updateMetaTag('twitter:card', 'summary_large_image', false)
-    }
-  }, [client])
 
   // Apply client theme colors as CSS variables
   useEffect(() => {
@@ -73,6 +42,19 @@ function AppContent() {
 
   return (
     <>
+      <Helmet>
+        <title>{client?.openGraph?.title || client?.name || 'Simplify'}</title>
+        <meta name="description" content={client?.openGraph?.description || client?.tagline || ''} />
+        <meta property="og:title" content={client?.openGraph?.title || client?.name || 'Simplify'} />
+        <meta property="og:description" content={client?.openGraph?.description || client?.tagline || ''} />
+        <meta property="og:image" content={client?.openGraph?.image} />
+        <meta property="og:url" content={client?.openGraph?.url || client?.url || 'https://jat-7xjr.onrender.com'} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={client?.twitter?.title || client?.name || 'Simplify'} />
+        <meta name="twitter:description" content={client?.twitter?.description || client?.tagline || ''} />
+        <meta name="twitter:image" content={client?.twitter?.image} />
+      </Helmet>
       <ScrollToTop />
       <div className="app">
         <Navbar />
