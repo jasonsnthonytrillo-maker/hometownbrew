@@ -109,11 +109,48 @@ const clientHeroContent = {
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isOpen, setIsOpen] = useState(false)
   const { client } = useClient()
   const { clientId } = useClient()
   
   // Check if this is the Simplify POS landing page
   const isSimplify = clientId === 'simplify'
+  
+  // Get store hours from client config
+  const storeHours = client?.contact?.storeHours || [
+    { day: 'Monday', hours: '10 AM–10 PM', isClosed: false },
+    { day: 'Tuesday', hours: '10 AM–10 PM', isClosed: false },
+    { day: 'Wednesday', hours: '10 AM–10 PM', isClosed: false },
+    { day: 'Thursday', hours: '10 AM–10 PM', isClosed: false },
+    { day: 'Friday', hours: '10 AM–10 PM', isClosed: false },
+    { day: 'Saturday', hours: '10 AM–10 PM', isClosed: false },
+    { day: 'Sunday', hours: 'Closed', isClosed: true }
+  ]
+
+  useEffect(() => {
+    const checkOpenStatus = () => {
+      const now = new Date()
+      const day = now.getDay()
+      const hours = now.getHours()
+      
+      // Sunday = 0
+      if (day === 0) {
+        setIsOpen(false)
+        return
+      }
+      
+      // Open from 10 AM to midnight
+      if (hours >= 10 || hours < 0) {
+        setIsOpen(true)
+      } else {
+        setIsOpen(false)
+      }
+    }
+
+    checkOpenStatus()
+    const interval = setInterval(checkOpenStatus, 60000)
+    return () => clearInterval(interval)
+  }, [])
   
   // Get client-specific content or use defaults
   const clientContent = clientHeroContent[clientId] || {
@@ -356,6 +393,52 @@ function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Store Hours & Testimonials Section */}
+      <section className="store-hours-section">
+        <div className="container">
+          <h2 className="section-title fade-in">What Our Customers Say</h2>
+          <div className="hours-testimonials-grid">
+            {/* Store Hours Column */}
+            <div className="store-hours-card fade-in-delay-1">
+              <h3 className="card-title">Store Hours</h3>
+              <div className="store-hours-status">
+                <span className={`status-badge ${isOpen ? 'open' : 'closed'}`}>
+                  {isOpen ? 'Open Now' : 'Closed'}
+                </span>
+              </div>
+              <div className="store-hours-list">
+                {storeHours.map((schedule, index) => (
+                  <div key={index} className={`hours-row ${schedule.isClosed ? 'closed-day' : ''}`}>
+                    <span className="day">{schedule.day}</span>
+                    <span className="hours">{schedule.hours}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Testimonials Column */}
+            <div className="testimonials-card fade-in-delay-2">
+              <h3 className="card-title">Customer Reviews</h3>
+              <div className="testimonials-list">
+                {client?.testimonials?.map((testimonial, index) => (
+                  <div key={index} className="testimonial-item">
+                    <div className="testimonial-stars">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <svg key={i} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="testimonial-comment">"{testimonial.comment}"</p>
+                    <p className="testimonial-author">— {testimonial.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

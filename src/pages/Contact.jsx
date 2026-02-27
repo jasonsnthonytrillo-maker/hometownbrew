@@ -199,6 +199,11 @@ function Contact() {
 
           {/* Contact Info */}
           <div className="contact-info">
+            <div className="contact-info-header">
+              <h2>Get in Touch</h2>
+              <p>Have questions or feedback? We'd love to hear from you. Reach out to us through any of the channels below.</p>
+            </div>
+
             {/* Phone */}
             <div className="contact-info-item">
               <div className="info-icon">
@@ -223,20 +228,6 @@ function Contact() {
               <div className="info-text">
                 <h3>Email</h3>
                 <p>{contactInfo.email}</p>
-              </div>
-            </div>
-            
-            {/* Address */}
-            <div className="contact-info-item">
-              <div className="info-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div className="info-text">
-                <h3>Address</h3>
-                <p>{contactInfo.address}</p>
               </div>
             </div>
             
