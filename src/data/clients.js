@@ -143,7 +143,7 @@ export const clients = {
       title: 'Hometown Brew - Coffee & Pastries',
       description: 'Hometown Brew – the best coffee and pastries in town!',
       image: '/hblogo.jpg',
-      url: 'https://jat-7xjr.onrender.com/hometownbrew'
+      url: 'https://jat-7xjr.onrender.com/#/hometownbrew'
     },
     twitter: {
       title: 'Hometown Brew - Coffee & Pastries',
@@ -251,7 +251,7 @@ export const clients = {
       title: 'Milk Tea Shop - Premium Boba & Fruit Tea',
       description: 'Milk Tea Shop – the best milk tea, fruit tea, and smoothies in town!',
       image: '/milktea-logo.png',
-      url: 'https://jat-7xjr.onrender.com/milkteashop'
+      url: 'https://jat-7xjr.onrender.com/#/milkteashop'
     },
     twitter: {
       title: 'Milk Tea Shop - Premium Boba & Fruit Tea',
@@ -343,7 +343,7 @@ export const clients = {
       title: 'Project Brew - Artisan Coffee & Pastries',
       description: 'Project Brew – premium artisan coffee and delicious pastries!',
       image: '/pblogo.jpg',
-      url: 'https://jat-7xjr.onrender.com/projectbrew'
+      url: 'https://jat-7xjr.onrender.com/#/projectbrew'
     },
     twitter: {
       title: 'Project Brew - Artisan Coffee & Pastries',
@@ -416,7 +416,7 @@ export const clients = {
       title: 'Simplify POS - Point of Sale for Small Businesses',
       description: 'Simplify POS – the best point of sale system for small businesses!',
       image: '/simplifylogo.png',
-      url: 'https://jat-7xjr.onrender.com'
+      url: 'https://jat-7xjr.onrender/#/simplify.com'
     },
     twitter: {
       title: 'Simplify POS - Point of Sale for Small Businesses',
