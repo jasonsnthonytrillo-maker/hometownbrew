@@ -402,26 +402,8 @@ function Home() {
         <div className="container">
           <h2 className="section-title fade-in">What Our Customers Say</h2>
           <div className="hours-testimonials-grid">
-            {/* Store Hours Column */}
-            <div className="store-hours-card fade-in-delay-1">
-              <h3 className="card-title">Store Hours</h3>
-              <div className="store-hours-status">
-                <span className={`status-badge ${isOpen ? 'open' : 'closed'}`}>
-                  {isOpen ? 'Open Now' : 'Closed'}
-                </span>
-              </div>
-              <div className="store-hours-list">
-                {storeHours.map((schedule, index) => (
-                  <div key={index} className={`hours-row ${schedule.isClosed ? 'closed-day' : ''}`}>
-                    <span className="day">{schedule.day}</span>
-                    <span className="hours">{schedule.hours}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Testimonials Column */}
-            <div className="testimonials-card fade-in-delay-2">
+            <div className="testimonials-card fade-in-delay-1">
               <h3 className="card-title">Customer Reviews</h3>
               <div className="testimonials-list">
                 {client?.testimonials?.map((testimonial, index) => (
@@ -435,6 +417,24 @@ function Home() {
                     </div>
                     <p className="testimonial-comment">"{testimonial.comment}"</p>
                     <p className="testimonial-author">— {testimonial.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Store Hours Column */}
+            <div className="store-hours-card fade-in-delay-2">
+              <h3 className="card-title">Store Hours</h3>
+              <div className="store-hours-status">
+                <span className={`status-badge ${isOpen ? 'open' : 'closed'}`}>
+                  {isOpen ? 'Open Now' : 'Closed'}
+                </span>
+              </div>
+              <div className="store-hours-list">
+                {storeHours.map((schedule, index) => (
+                  <div key={index} className={`hours-row ${schedule.isClosed ? 'closed-day' : ''}`}>
+                    <span className="day">{schedule.day}</span>
+                    <span className="hours">{schedule.hours}</span>
                   </div>
                 ))}
               </div>
