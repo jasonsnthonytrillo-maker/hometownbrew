@@ -74,6 +74,12 @@ function Menu() {
   }
 
   const handleAddToCart = (product) => {
+    // Check if product is available
+    if (product.available === false) {
+      showToastNotification(`${product.name} is currently not available`, false)
+      return
+    }
+
     // If product has sizes, show size selection modal
     if (product.sizes && product.sizes.length > 0) {
       setSelectedProduct(product)
@@ -148,7 +154,10 @@ function Menu() {
 
           <div className="menu-grid">
             {paginatedProducts.map(product => (
-              <div key={product.id} className="menu-card">
+              <div key={product.id} className={`menu-card ${product.available === false ? 'unavailable' : ''}`}>
+                {product.available === false && (
+                  <div className="sold-out-badge">Sold Out</div>
+                )}
                 <div className="menu-card-image">
                   <img src={product.image} alt={product.name} />
                 </div>
@@ -165,8 +174,9 @@ function Menu() {
                     <button 
                       className="menu-card-button"
                       onClick={() => handleAddToCart(product)}
+                      disabled={product.available === false}
                     >
-                      Add to Cart
+                      {product.available === false ? 'Not Available' : 'Add to Cart'}
                     </button>
                   </div>
                 </div>

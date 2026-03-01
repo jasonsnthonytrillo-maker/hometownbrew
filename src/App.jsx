@@ -9,6 +9,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Menu from './pages/Menu'
 import Cart from './pages/Cart'
+import Events from './pages/Events'
 import { CartProvider } from './context/CartContext'
 import { ClientProvider, useClient } from './context/ClientContext'
 import { getClientIds, defaultClientId } from './data/clients'
@@ -80,12 +81,16 @@ function AppContent() {
             {clientIds.map(clientId => (
               <Route key={`${clientId}-cart`} path={`/${clientId}/cart`} element={<Cart />} />
             ))}
+            {clientIds.map(clientId => (
+              <Route key={`${clientId}-events`} path={`/${clientId}/events`} element={<Events />} />
+            ))}
             
             {/* Legacy routes (redirect to default client) */}
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/events" element={<Events />} />
           </Routes>
         </main>
         <Footer />

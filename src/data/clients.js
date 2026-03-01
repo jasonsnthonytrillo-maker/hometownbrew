@@ -21,7 +21,8 @@ export const clients = {
       { id: 'iced-coffee', label: 'Iced Coffee' },
       { id: 'pastries', label: 'Pastries' },
       { id: 'dairy', label: 'Dairy Products' },
-      { id: 'bestseller', label: 'Best Seller' }
+      { id: 'bestseller', label: 'Best Seller' },
+      { id: 'popup', label: 'Pop-Up Package' }
     ],
     products: [
       {
@@ -31,6 +32,7 @@ export const clients = {
         price: 120,
         category: 'hot-coffee',
         image: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&h=300&fit=crop',
+        available: true,
         sizes: [
           { label: 'Small (12oz)', price: 120 },
           { label: 'Medium (16oz)', price: 140 },
@@ -44,6 +46,7 @@ export const clients = {
         price: 150,
         category: 'hot-coffee',
         image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop',
+        available: true,
         sizes: [
           { label: 'Small (12oz)', price: 140 },
           { label: 'Medium (16oz)', price: 160 },
@@ -57,6 +60,7 @@ export const clients = {
         price: 160,
         category: 'hot-coffee',
         image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop',
+        available: true,
         sizes: [
           { label: 'Small (12oz)', price: 150 },
           { label: 'Medium (16oz)', price: 170 },
@@ -70,6 +74,7 @@ export const clients = {
         price: 130,
         category: 'hot-coffee',
         image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=300&fit=crop',
+        available: true,
         sizes: [
           { label: 'Small (12oz)', price: 120 },
           { label: 'Medium (16oz)', price: 140 },
@@ -82,7 +87,8 @@ export const clients = {
         description: 'Buttery flaky croissant, perfectly baked golden brown',
         price: 80,
         category: 'pastries',
-        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=300&fit=crop',
+        available: true
       },
       {
         id: 6,
@@ -90,7 +96,8 @@ export const clients = {
         description: 'Sweet and tender Danish pastry filled with cream cheese',
         price: 120,
         category: 'pastries',
-        image: 'https://images.unsplash.com/photo-1509365390695-33aee754301f?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1509365390695-33aee754301f?w=400&h=300&fit=crop',
+        available: true
       },
       {
         id: 7,
@@ -98,7 +105,8 @@ export const clients = {
         description: 'Freshly baked muffin bursting with juicy blueberries',
         price: 150,
         category: 'pastries',
-        image: 'https://images.unsplash.com/photo-1606850780554-b55ea4dd0b70?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1606850780554-b55ea4dd0b70?w=400&h=300&fit=crop',
+        available: true
       },
       {
         id: 8,
@@ -106,7 +114,8 @@ export const clients = {
         description: 'Warm cinnamon roll topped with creamy frosting',
         price: 170,
         category: 'pastries',
-        image: 'https://images.unsplash.com/photo-1509365390695-33aee754301f?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1509365390695-33aee754301f?w=400&h=300&fit=crop',
+        available: true
       },
       {
         id: 9,
@@ -115,6 +124,7 @@ export const clients = {
         price: 120,
         category: 'dairy',
         image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop',
+        available: false,
         sizes: [
           { label: 'Small (12oz)', price: 110 },
           { label: 'Medium (16oz)', price: 130 },
@@ -128,6 +138,7 @@ export const clients = {
         price: 100,
         category: 'dairy',
         image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&h=300&fit=crop',
+        available: true,
         sizes: [
           { label: 'Small (12oz)', price: 90 },
           { label: 'Medium (16oz)', price: 110 },
@@ -140,7 +151,8 @@ export const clients = {
         description: 'Rich and creamy white mocha with vanilla and chocolate',
         price: 150,
         category: 'bestseller',
-        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop'
+        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop',
+        available: true
       },
       {
         id: 12,
@@ -149,6 +161,7 @@ export const clients = {
         price: 150,
         category: 'iced-coffee',
         image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop',
+        available: true,
         sizes: [
           { label: 'Small (12oz)', price: 140 },
           { label: 'Medium (16oz)', price: 160 },
