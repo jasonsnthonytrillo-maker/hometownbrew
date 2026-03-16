@@ -1,12 +1,13 @@
-# Fix 404 Error for Direct /menu Access on Render
+# Task Progress: Fix Menu 404 / Direct Navigation
 
-## Status: In Progress
+## Plan Steps
+- [x] 1. Create/update TODO.md with progress tracking
+- [x] 2. Edit root _redirects file
+- [x] 3. Edit public/_redirects file  
+- [ ] 4. Build project (`npm run build`)
+- [ ] 5. Deploy to Render.com (git push)
+- [ ] 6. Test direct URLs (/menu, /cart, etc.)
+- [ ] 7. Mark complete
 
-### Steps from approved plan:
-- [✓] Step 1: Update public/_redirects with clean SPA rewrite for Render
-- [✓] Step 2: Add vite.config base:'./' for asset paths
-- [✓] Step 3: _redirects root for Render static + deployed
-- [ ] Step 4: Test other routes (/cart, /about, /hometownbrew/menu etc.)
-- [ ] Step 5: Mark complete in TODO.md
+**Current Status**: SPA routing configured. Next: build & deploy.
 
-**Note**: Auto-deploy disabled (manual only per user).
