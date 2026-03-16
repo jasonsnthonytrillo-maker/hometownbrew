@@ -561,7 +561,7 @@ export const clients = {
     openGraph: {
       title: 'Simplify POS - Point of Sale for Small Businesses',
       description: 'Simplify POS – the best point of sale system for small businesses!',
-      image: 'https://cravecornerhub.onrender.com/wallpaper.jpg',
+      image: 'https://cravecornerhub.onrender.com/Crave Corner.jpg',
       url: 'https://cravecornerhub.onrender.com'
     },
     twitter: {
