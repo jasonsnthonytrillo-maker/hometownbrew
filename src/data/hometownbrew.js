@@ -5,7 +5,7 @@ export const hometownbrew = {
   logo: '/hblogo.jpg',
   favicon: '/hblogo.jpg',
   banner: '/banner.jpg',
-  url: 'https://jat-7xjr.onrender.com/hometownbrew',
+  url: 'https://hometownbrew.onrender.com',
   theme: {
     primary: '#05300d',
     secondary: '#4aab20ac',
