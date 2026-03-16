@@ -443,16 +443,19 @@
   border: 2px solid var(--primary-dark-green);
   border-radius: 10px;
   outline: none;
+  background-color: var(--primary-darkest-green);
+  color: var(--white);
   transition: var(--transition);
 }
 
 .name-input:focus {
   border-color: var(--light-green);
   box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.2);
+  background-color: var(--darkest-green);
 }
 
 .name-input::placeholder {
-  color: var(--primary-dark-green);
+  color: rgba(255,255,255,0.8);
 }
 
 /* Copied to clipboard notification */

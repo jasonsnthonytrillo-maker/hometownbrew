@@ -484,7 +484,7 @@ evd.menu {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.25rem;
-  background: linear-gradient(135deg, rgba(93, 167, 106, 0.1) 0%, rgba(113, 188, 120, 0.1) 100%);
+  background-color: #ffffff;
   border: 2px solid var(--light-green);
   border-radius: 10px;
   cursor: pointer;
@@ -495,7 +495,7 @@ evd.menu {
 }
 
 .size-option-btn:hover {
-  background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-dark-green) 100%);
+  background-color: #065b0d;
   color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
