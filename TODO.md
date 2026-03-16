@@ -1,15 +1,16 @@
-# Task: Change colors in size select buttons for readability ✓
+# PWA Conversion TODO
 
-## Steps:
-- [x] Step 1: Create TODO.md (done)
-- [x] Step 2: Edit src/pages/Menu.css - Update .size-option-btn normal state for dark text on light green bg (`color: var(--primary-dark-green);`), ensure hover dark green/white with enhanced shadow (done)
-- [x] Step 3: Verify changes, update TODO.md (done)
-- [x] Step 4: Test in browser, complete task (changes applied successfully)
+## Approved Plan Steps (Breakdown):
 
-**Changes summary:**
-- Normal state: Added `color: var(--primary-dark-green);` to .size-option-btn for readable dark green text on light bg
-- Hover: Added `box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);` for better effect
-- .size-price: `color: inherit;` to match button color
-- .size-modal-card: Subtle green tint bg for cohesion
+1. ✅ **Plan confirmed** by user
+2. **Install vite-plugin-pwa**: `npm i vite-plugin-pwa -D`
+3. **[ ] Generate PWA icons**: Create multiple sized maskable PNGs from hblogo.jpg (192x192, 512x512)
+4. **[ ] Update vite.config.js**: Add vite-plugin-pwa with config (precache manifest, caching strategies)
+5. **[ ] Enhance public/manifest.json**: Add categories, screenshots, lang=ar, orientation=portrait
+6. **[ ] Update index.html**: Add iOS PWA metas (apple-mobile-web-app-capable, status-bar-style)
+7. **[ ] Update src/App.jsx**: Integrate PWA install prompt
+8. **[ ] Minor src/index.css**: Add safe-100vh, splash screen support
+9. **[ ] Test build**: `npm run build`, `npm run preview`, check Lighthouse PWA score
+10. **[ ] Deploy & verify**: Push to Render, test install on mobile
 
-Size selection buttons now have dark green text (readable) on light green bg normally, switch to white text on dark green hover. No functionality changed.
+*Mark as you complete each step*

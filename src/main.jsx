@@ -5,6 +5,19 @@ import './index.css'
 import { HashRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 
+// Register service worker for PWA functionality
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/src/sw.js')
+      .then((registration) => {
+        console.log('SW registered successfully:', registration.scope);
+      })
+      .catch((error) => {
+        console.log('SW registration failed:', error);
+      });
+  });
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HelmetProvider>
@@ -14,3 +27,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </HelmetProvider>
   </React.StrictMode>,
 )
+
