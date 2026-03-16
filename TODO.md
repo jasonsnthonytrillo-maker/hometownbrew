@@ -9,5 +9,5 @@
 - [ ] 6. Test direct URLs (/menu, /cart, etc.)
 - [ ] 7. Mark complete
 
-**Current Status**: SPA routing configured. Next: build & deploy.
+**Current Status**: Switched to HashRouter (#/menu URLs). Ready for build/deploy. Test: yoursite.onrender.com/#/menu
 
