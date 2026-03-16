@@ -5,7 +5,7 @@
 ### Steps from approved plan:
 - [✓] Step 1: Update public/_redirects with clean SPA rewrite for Render
 - [✓] Step 2: Add vite.config base:'./' for asset paths
-- [ ] Step 3: Strict _redirects + render.yaml + final deploy/test
+- [✓] Step 3: _redirects root for Render static + deployed
 - [ ] Step 4: Test other routes (/cart, /about, /hometownbrew/menu etc.)
 - [ ] Step 5: Mark complete in TODO.md
 
