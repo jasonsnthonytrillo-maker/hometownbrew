@@ -174,72 +174,81 @@ const handleSizeSelect = (size) => {
             ))}
           </div>
 
-          <div className="menu-grid">
-            {paginatedProducts.map(product => (
-              <div key={product.id} className={`menu-card ${product.available === false ? 'unavailable' : ''}`}>
-                {product.available === false && (
-                  <div className="sold-out-badge">Sold Out</div>
-                )}
-                <div className="menu-card-image">
-                  <img src={product.image} alt={product.name} />
-                </div>
-                <div className="menu-card-content">
-                  <h3 className="menu-card-title">{product.name}</h3>
-                  <p className="menu-card-description">{product.description}</p>
-                  <div className="menu-card-footer">
-                    <span className="menu-card-price">
-                      {product.sizes && product.sizes.length > 0 
-                        ? `From ₱${product.sizes[0].price}`
-                        : `₱${product.price}`
-                      }
-                    </span>
-                    <button 
-                      className={`menu-card-button ${addingProductId === product.id ? 'adding' : ''}`}
-                      onClick={() => handleAddToCart(product)}
-                      disabled={product.available === false || addingProductId === product.id}
-                    >
-                      {addingProductId === product.id ? (
-                        <>
-                          {addPhase === 'adding' ? (
-                            <>
-                              Adding...
-                              <span className="spinner"></span>
-                            </>
-                          ) : addPhase === 'added' ? (
-                            'Added ✓'
-                          ) : (
-                            'Add to Cart'
-                          )}
-                        </>
-                      ) : product.available === false ? 'Not Available' : 'Add to Cart'}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Pagination Controls */}
-          {totalPages > 1 && (
-            <div className="pagination-controls">
-              <button 
-                className="pagination-btn"
-                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}
-              >
-                ← Previous
-              </button>
-              <div className="pagination-info">
-                Page {currentPage} of {totalPages}
-              </div>
-              <button 
-                className="pagination-btn"
-                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                disabled={currentPage === totalPages}
-              >
-                Next →
-              </button>
+          {filteredProducts.length === 0 ? (
+            <div className="no-products-message">
+              <h3>No products found.</h3>
+              <p>Try adjusting your search terms or category filter.</p>
             </div>
+          ) : (
+            <>
+              <div className="menu-grid">
+                {paginatedProducts.map(product => (
+                  <div key={product.id} className={`menu-card ${product.available === false ? 'unavailable' : ''}`}>
+                    {product.available === false && (
+                      <div className="sold-out-badge">Sold Out</div>
+                    )}
+                    <div className="menu-card-image">
+                      <img src={product.image} alt={product.name} />
+                    </div>
+                    <div className="menu-card-content">
+                      <h3 className="menu-card-title">{product.name}</h3>
+                      <p className="menu-card-description">{product.description}</p>
+                      <div className="menu-card-footer">
+                        <span className="menu-card-price">
+                          {product.sizes && product.sizes.length > 0 
+                            ? `From ₱${product.sizes[0].price}`
+                            : `₱${product.price}`
+                          }
+                        </span>
+                        <button 
+                          className={`menu-card-button ${addingProductId === product.id ? 'adding' : ''}`}
+                          onClick={() => handleAddToCart(product)}
+                          disabled={product.available === false || addingProductId === product.id}
+                        >
+                          {addingProductId === product.id ? (
+                            <>
+                              {addPhase === 'adding' ? (
+                                <>
+                                  Adding...
+                                  <span className="spinner"></span>
+                                </>
+                              ) : addPhase === 'added' ? (
+                                'Added ✓'
+                              ) : (
+                                'Add to Cart'
+                              )}
+                            </>
+                          ) : product.available === false ? 'Not Available' : 'Add to Cart'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="pagination-controls">
+                  <button 
+                    className="pagination-btn"
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                  >
+                    ← Previous
+                  </button>
+                  <div className="pagination-info">
+                    Page {currentPage} of {totalPages}
+                  </div>
+                  <button 
+                    className="pagination-btn"
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                  >
+                    Next →
+                  </button>
+                </div>
+              )}
+            </>
           )}
 
           {/* Size Selection Modal */}

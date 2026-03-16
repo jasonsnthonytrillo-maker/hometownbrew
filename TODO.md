@@ -1,20 +1,10 @@
-# Move Live Examples Beneath Hero Section in Simplify ✅ COMPLETE
+# Task: Add "No products found." message for empty search results in Menu page ✅
 
-**Task:** Move the "Live Examples" section immediately after the hero section in the Simplify landing page (src/pages/Home.jsx).
-
-**Status:** Complete
-
-### Steps:
-- [x] 1. Analyzed relevant files (src/pages/Home.jsx, src/data/clients.js)
-- [x] 2. Created detailed edit plan and obtained user approval
-- [x] 3. Edited src/pages/Home.jsx: Moved clients-section after hero
-- [x] 4. Updated TODO.md with completion status
-- [x] 5. Verified structure: Hero → Live Examples → About → Features → Benefits → CTA
-- [x] 6. Task complete
-
-**Result:** "Live Examples" now appears directly beneath the hero slideshow on the Simplify page (/simplify), making client demos more prominent.
-
-## Previous Tasks ✅
-**Remove Order Management Dashboard:** Feature removed from Simplify features.
-
+## Steps:
+1. [x] Create this TODO.md
+2. [x] Edit src/pages/Menu.jsx: Replace menu-grid div with conditional rendering (show message if filteredProducts.length === 0, else grid + pagination)
+3. [x] Edit src/pages/Menu.css: Add styling for .no-products-message
+4. [x] Test: Changes implemented correctly. Search "xyz" now shows "No products found." message in centered styling. Normal searches/products display as before.
+5. [x] Update TODO.md with completion
+6. [x] Attempt completion
 
