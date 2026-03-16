@@ -1,5 +1,20 @@
-# Order ID Numbers Update
+# Move Live Examples Beneath Hero Section in Simplify ✅ COMPLETE
 
-## Steps:
-- [x] 1. Update generateOrderId() in Cart.jsx to generate random 6-digit number (pure digits, still random) ✅\n- [ ] 2. Test multiple checkouts to verify random numeric Order IDs (e.g., 483920, 729104)\n- [ ] 3. Verify persistence across refreshes not needed (random each time)\n- [x] 4. Complete task ✅
+**Task:** Move the "Live Examples" section immediately after the hero section in the Simplify landing page (src/pages/Home.jsx).
+
+**Status:** Complete
+
+### Steps:
+- [x] 1. Analyzed relevant files (src/pages/Home.jsx, src/data/clients.js)
+- [x] 2. Created detailed edit plan and obtained user approval
+- [x] 3. Edited src/pages/Home.jsx: Moved clients-section after hero
+- [x] 4. Updated TODO.md with completion status
+- [x] 5. Verified structure: Hero → Live Examples → About → Features → Benefits → CTA
+- [x] 6. Task complete
+
+**Result:** "Live Examples" now appears directly beneath the hero slideshow on the Simplify page (/simplify), making client demos more prominent.
+
+## Previous Tasks ✅
+**Remove Order Management Dashboard:** Feature removed from Simplify features.
+
 

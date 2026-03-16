@@ -172,7 +172,7 @@ function Home() {
   // Determine base path for navigation
   const basePath = clientId ? `/${clientId}` : ''
 
-  // Render Simplify POS Landing Page
+  // Render Simplify Cafe Kiosk Landing Page
   if (isSimplify && client) {
     const { owner, features, benefits, contact } = client
     
@@ -192,14 +192,14 @@ function Home() {
           <div className="hero-overlay"></div>
           <div className="hero-content fade-in">
             <h1 className="hero-title">{clientContent.title}</h1>
-            <p className="hero-subtitle">{clientContent.subtitle}</p>
+            <p className="hero-subtitle">Website + Online Kiosk for your Cafe or Restaurant</p>
             <a 
               href={contact?.messengerLink || 'https://www.messenger.com'} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-primary hero-btn"
             >
-              Avail Now
+              Get Your Kiosk
             </a>
           </div>
           <div className="hero-dots">
@@ -210,6 +210,42 @@ function Home() {
                 onClick={() => setCurrentSlide(index)}
               />
             ))}
+          </div>
+        </section>
+
+        {/* Our Clients Section */}
+        <section className="clients-section">
+          <div className="container">
+            <h2 className="section-title fade-in">Live Examples</h2>
+            <p className="section-subtitle fade-in-delay-1">
+              See Simplify Kiosk in action with our live client websites
+            </p>
+            <div className="features-grid clients-grid">
+              <Link 
+                to="/projectbrew" 
+                className="feature-card client-card fade-in-delay-1"
+              >
+                <div className="feature-icon client-preview">
+                  <img src="/pblogo.jpg" alt="Projectbrew" className="client-logo" />
+                  <img src="/pb.jpg" alt="Live Preview" className="client-preview-img" />
+                </div>
+                <h3>Projectbrew</h3>
+                <p>Specialty coffee & artisan pastries</p>
+                <a href="/projectbrew" className="live-link">Live Demo →</a>
+              </Link>
+              <Link 
+                to="/hometownbrew" 
+                className="feature-card client-card fade-in-delay-2"
+              >
+                <div className="feature-icon client-preview">
+                  <img src="/hblogo.jpg" alt="Hometown Brew" className="client-logo" />
+                  <img src="/croissant.jpg" alt="Live Preview" className="client-preview-img" />
+                </div>
+                <h3>Hometown Brew</h3>
+                <p>Coffee, dairies & fresh baked goods</p>
+                <a href="/hometownbrew" className="live-link">Live Demo →</a>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -256,9 +292,9 @@ function Home() {
         {/* Features Section */}
         <section className="features-section">
           <div className="container">
-            <h2 className="section-title fade-in">What is Simplify?</h2>
+            <h2 className="section-title fade-in">What is Simplify Cafe Kiosk?</h2>
             <p className="section-subtitle fade-in-delay-1">
-               “Simplify POS lets your customers order from your website and sends their orders straight to Messenger — fast, easy, and hassle-free.”
+               "Complete website solution for cafes & restaurants. Customers order online, orders are stored securely and instantly forwarded to your Facebook Messenger."
             </p>
             
             <div className="features-grid">
@@ -293,8 +329,9 @@ function Home() {
 
         {/* Benefits Section */}
         <section className="benefits-section">
+
           <div className="container">
-            <h2 className="section-title fade-in">Why Choose Simplify?</h2>
+            <h2 className="section-title fade-in">Why Choose Simplify Cafe Kiosk?</h2>
             <p className="section-subtitle fade-in-delay-1">
               Benefits that help your business grow
             </p>
@@ -321,8 +358,8 @@ function Home() {
         <section className="cta-section">
           <div className="container">
             <div className="cta-content fade-in">
-              <h2>Ready to Simplify Your Business?</h2>
-              <p>Start managing your store with ease today!</p>
+              <h2>Ready for Your Cafe Kiosk?</h2>
+              <p>Get orders delivered straight to Messenger today!</p>
               <a 
                 href={contact?.messengerLink || 'https://www.messenger.com'} 
                 target="_blank" 

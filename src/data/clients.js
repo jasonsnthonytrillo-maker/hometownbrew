@@ -500,18 +500,18 @@ export const clients = {
     ]
   },
 
-  // Simplify - POS Service Landing Page
+  // Simplify Cafe Kiosk Landing Page
   simplify: {
     id: 'simplify',
-    name: 'Simplify',
-    tagline: 'Your store. Your website. Your Messenger.',
+    name: 'Simplify Cafe Kiosk',
+    tagline: 'Website + Online Kiosk for Cafes & Restaurants',
     logo: '/simplifylogo.png',
     favicon: '/simplifylogo.png',
     banner: '/simplify-banner.jpg',
     url: 'https://jat-7xjr.onrender.com',
     theme: {
-      primary: '#0028f1ca',
-      secondary: '#1ea8d6',
+      primary: '#b19469ca',
+      secondary: '#4e2f00c9',
       accent: '#ff24a0',
       background: '#FAFAFA',
       text: '#000000'
@@ -529,32 +529,34 @@ export const clients = {
     owner: {
       name: 'Jason Anthony Trillo',
       photo: '/jasonanthony.jpg',
-      description: 'A passionate entrepreneur dedicated to helping small businesses thrive in the digital age. With Simplify, I aim to make point-of-sale systems accessible and easy to use for every store owner.'
+      description: 'Creator of Simplify Cafe Kiosk – the complete website and online ordering solution for cafes and restaurants. Orders are stored in real-time and instantly sent to your Messenger for quick fulfillment.'
     },
     features: [
       {
-        title: 'Web-based POS',
-        description: 'Access your store management from any device with an internet connection. No installations needed.',
+        title: 'Complete Cafe Website',
+        description: 'Professional responsive website showcasing your menu, location, and story.',
         icon: '🌐'
       },
       {
-        title: 'Messenger Ordering',
-        description: 'Customers can easily order through Facebook Messenger. Streamline your sales process effortlessly.',
-        icon: '💬'
+        title: 'Online Kiosk Ordering',
+        description: 'Customers browse and place orders directly from your website – no apps needed.',
+        icon: '💻'
       },
       {
-        title: 'Easy Management',
-        description: 'Manage products, track sales, and monitor your business with our intuitive dashboard.',
-        icon: '📊'
-      }
+        title: 'Instant Messenger Delivery',
+        description: 'All orders automatically sent to your Facebook Messenger with full details.',
+        icon: '📱'
+      },
+
     ],
     benefits: [
-      'No need for expensive hardware',
-      'Real-time sales tracking',
-      'Customer order management',
-      'Easy product updates',
-      '24/7 access from anywhere',
-      'Simple setup process'
+      'Zero hardware costs – works on any device',
+      'Orders stored and organized automatically',
+      'Instant Messenger notifications',
+      'Real-time sales and order tracking',
+      'Customer data collection and management',
+      'Easy menu updates from anywhere',
+      '24/7 accessible order system'
     ],
     openGraph: {
       title: 'Simplify POS - Point of Sale for Small Businesses',
