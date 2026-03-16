@@ -216,7 +216,7 @@ function Home() {
         {/* Our Clients Section */}
         <section className="clients-section">
           <div className="container">
-            <h2 className="section-title fade-in">Live Examples</h2>
+            <h2 className="section-title fade-in">Live Websites</h2>
             <p className="section-subtitle fade-in-delay-1">
               See Simplify Kiosk in action with our live client websites
             </p>
